@@ -26,7 +26,7 @@
         </div>
 
         <div class="form-group"><label id="desc-label" for="description">Description:</label>
-            <input class="form-control" type="text" id="description" name="description" pattern="[a-zA-Z0-9 ]+" maxlength='25'>
+            <input class="form-control" type="text" id="description" name="description" pattern="[a-zA-Z0-9 ]+" maxlength='25' required>
         </div>
         
         <div class="form-group"><label id="cat-label" for="category">Category:</label>
@@ -47,6 +47,16 @@
 </html>
 
 <script>
+
+    var uploadField = document.getElementById("image");
+
+    uploadField.onchange = function() {
+        if(this.files[0].size > 2097152){
+           alert("File is too big!");
+           this.value = "";
+        };
+    };
+    
     document.getElementById('useAI').onchange = function() {
         document.getElementById('description').disabled = this.checked;
         document.getElementById('description').value = "";

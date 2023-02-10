@@ -53,7 +53,7 @@
                 while ($row = mysqli_fetch_assoc($result)) {
                     echo "<div class='item col-xs-4 col-lg-4'>";
                     echo " <div class='thumbnail'>";
-                    echo "  <img class='group list-group-image' src='" . $row["image"] . "'width='400' height='300' alt='image' title='image'/>";
+                    echo "  <img class='group list-group-image' src='" . $row["image"] . "'alt='image' title='image'/>";
                     echo "  <div class='caption'>";
                     echo "   <h3 class='group inner list-group-item-heading'>" . $row["description"] . "</h3>";
                     echo "   <br>";

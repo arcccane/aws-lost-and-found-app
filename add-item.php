@@ -1,5 +1,8 @@
 <?php
 
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 require 'aws-autoloader.php';
 
 use Aws\S3\S3Client;
@@ -61,13 +64,10 @@ if (!$conn) {
 
 mysqli_set_charset($conn, "utf8");
 
-// Get the values uploaded by add-item-form.html
-$image = $_FILES['image'];
-$description = $_POST['description'];
-$category = $_POST['category'];
-
 // If image is uploaded
-if (isset($image)) {
+if (isset($_FILES['image'])) {
+  
+    $image = $_FILES['image'];
     
     // If AI checkbox is checked. Call the `detectLabels` function to describe the image
     if(isset($_POST['useAI'])) {
@@ -101,6 +101,9 @@ if (isset($image)) {
           echo $e->getMessage();
           error_log($e->getMessage());
       }
+    } else {
+        $description = $_POST['description'];
+        $category = $_POST['category'];
     };
     
      // Upload the file to S3
