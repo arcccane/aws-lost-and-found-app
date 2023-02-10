@@ -1,0 +1,5 @@
+any=arn:aws:sns:us-east-1:027535722782:lost-and-found-any
+valuable=arn:aws:sns:us-east-1:027535722782:lost-and-found-valuable
+non-valuable=arn:aws:sns:us-east-1:027535722782:lost-and-found-non-valuable
+perishable=arn:aws:sns:us-east-1:027535722782:lost-and-found-perishable
+other=arn:aws:sns:us-east-1:027535722782:lost-and-found-other

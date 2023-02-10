@@ -50,8 +50,12 @@ $rekognitionClient = new RekognitionClient([
     ],
 ]);
 
+// Get RDS endpoint
+$file = file_get_contents('rds-endpoint.txt');
+$contents = explode("\n", $file);
+
 // Connect to the RDS database
-$host = "lost-and-found-db.cfwaf6fovbdu.us-east-1.rds.amazonaws.com";
+$host = explode("=", $contents[0])[1];
 $user = "admin";
 $password = "password";
 $db = "lost_and_found_db";
@@ -128,10 +132,14 @@ if (isset($_FILES['image'])) {
         
         // Publish message to subscribed topics based on category of item added
         
+        // Get all topic ARNs
+        $file = file_get_contents('sns-arns.txt');
+        $contents = explode("\n", $file);
+        
         // Publish to subscribers of any item
         try {
           $snsClient->publish(array(
-            'TopicArn' => 'arn:aws:sns:us-east-1:027535722782:lost-and-found-any',
+            'TopicArn' => explode("=", $contents[0])[1],
             'Subject' => 'New Item Uploaded',
             'Message' => 'A new item has been uploaded. ' .
                          'Check it out at: ' . 'http://' . file_get_contents('http://checkip.amazonaws.com/'),
@@ -144,16 +152,16 @@ if (isset($_FILES['image'])) {
         
         switch ($category) {
           case 'Valuable':
-            $topicArn = 'arn:aws:sns:us-east-1:027535722782:lost-and-found-valuable';
+            $topicArn = explode("=", $contents[1])[1];
             break;
           case 'Non-Valuable':
-            $topicArn = 'arn:aws:sns:us-east-1:027535722782:lost-and-found-non-valuable';
+            $topicArn = explode("=", $contents[2])[1];
             break;
           case 'Perishable':
-            $topicArn = 'arn:aws:sns:us-east-1:027535722782:lost-and-found-perishable';
+            $topicArn = explode("=", $contents[3])[1];
             break;
           case 'Other':
-            $topicArn = 'arn:aws:sns:us-east-1:027535722782:lost-and-found-other';
+            $topicArn = explode("=", $contents[4])[1];
             break;
           default:
             break;

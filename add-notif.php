@@ -31,22 +31,26 @@ $email = $_POST['email'];
 $category = $_POST['category'];
 $topicArn = '';
 
+// Get all topic ARNs
+$file = file_get_contents('sns-arns.txt');
+$contents = explode("\n", $file);
+
 // Subscribe to an SNS topic based on category selected
 switch ($category) {
     case 'Any':
-        $topicArn = 'arn:aws:sns:us-east-1:027535722782:lost-and-found-any';
+        $topicArn = explode("=", $contents[0])[1];
         break;
     case 'Valuable':
-        $topicArn = 'arn:aws:sns:us-east-1:027535722782:lost-and-found-valuable';
+        $topicArn = explode("=", $contents[1])[1];
         break;
     case 'Non-Valuable':
-        $topicArn = 'arn:aws:sns:us-east-1:027535722782:lost-and-found-non-valuable';
+        $topicArn = explode("=", $contents[2])[1];
         break;
     case 'Perishable':
-        $topicArn = 'arn:aws:sns:us-east-1:027535722782:lost-and-found-perishable';
+        $topicArn = explode("=", $contents[3])[1];
         break;
     case 'Other':
-        $topicArn = 'arn:aws:sns:us-east-1:027535722782:lost-and-found-other';
+        $topicArn = explode("=", $contents[4])[1];
         break;
     default:
         break;
