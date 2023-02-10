@@ -1,0 +1,82 @@
+@import url(https:////maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css);
+
+.main-title {
+    text-align: center;
+    margin-left: 10%;
+    font-size: 4vw;
+    font-family: serif;
+}
+
+a h4 {
+    font-size: 1.5vw;
+    font-family: serif;
+}
+
+.title {
+    text-align: center;
+    margin-right: 5%;
+    font-family: serif;
+}
+
+.link-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  float: right;
+}
+
+.link-container a {
+  margin-bottom: -25px;
+}
+
+img {
+    max-height: 250rem;
+    max-width: 400rem;
+}
+
+@media screen and (max-width: 550px) {
+  img {
+    max-height: 80;
+    max-width: 400;
+  }
+}
+
+.caption h3 {
+    font-size: 1.75vw;
+}
+
+.caption h5 {
+    font-size: 1.25vw;
+}
+
+.search {
+    background-position: 10px 12px;
+    background-repeat: no-repeat;
+    width: 100%;
+    font-size: 16px;
+    padding: 12px 20px 12px 40px;
+    border: 1px solid #ddd;
+    margin-bottom: 12px;
+}
+
+
+form {
+    border-radius: 5px;
+    padding: 2.5rem;
+    margin-bottom: 2rem;
+}
+
+form .form-group {
+    margin: 0 auto 1.25rem auto;
+    padding: 0.25rem;
+}
+
+form .form-group .form-control {
+    display: block;
+    width: 100%;
+    height: 3.375rem;
+}
+
+.back {
+    float: left;
+}

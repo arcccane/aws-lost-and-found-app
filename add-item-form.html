@@ -1,0 +1,56 @@
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+    </link>
+</head>
+
+<body>
+    <div class="well well-sm">
+        <a href="index.php"><h4 class="back">Back</h4></a>
+        <h2 class="title"><strong>Add Lost and Found Item</strong></h2>
+    </div>
+
+    <form action="add-item.php" method="post" enctype="multipart/form-data">
+
+        <div class="form-group"><label id="image-label" for="image">Image:</label>
+            <input type="file" id="image" name="image" accept="image/*" required>
+        </div>
+
+        <br>
+        
+        <div class="form-group">
+            <label id="check-label" for="useAI">Use AI to describe image: </label>
+            <input type="checkbox" id="useAI" name="useAI" />
+        </div>
+
+        <div class="form-group"><label id="desc-label" for="description">Description:</label>
+            <input class="form-control" type="text" id="description" name="description" pattern="[a-zA-Z0-9 ]+" maxlength='25'>
+        </div>
+        
+        <div class="form-group"><label id="cat-label" for="category">Category:</label>
+            <select id="category" name="category" required>
+                <option value="Valuable">Valuable</option>
+                <option value="Non-Valuable">Non-Valuable</option>
+                <option value="Perishable">Perishable</option>
+                <option value="Other">Other</option>
+            </select>
+        </div>
+        
+        <br>
+
+        <input class="btn btn-success" type="submit" value="Submit">
+    </form>
+</body>
+
+</html>
+
+<script>
+    document.getElementById('useAI').onchange = function() {
+        document.getElementById('description').disabled = this.checked;
+        document.getElementById('description').value = "";
+        document.getElementById("category").disabled = this.checked;
+        document.getElementById("category").value = "Other";
+    };
+</script>

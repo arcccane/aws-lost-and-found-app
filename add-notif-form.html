@@ -1,0 +1,41 @@
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+    </link>
+</head>
+
+<body>
+    <div class="well well-sm">
+        <a href="index.php"><h4 class="back">Back</h4></a>
+        <h2 class="title"><strong>Create Notification for Lost and Found Item</strong></h2>
+    </div>
+
+    <form action="add-notif.php" method="post" enctype="multipart/form-data">
+
+        <div class="form-group"><label id="email-label" for="email">Email:</label>
+            <input class="form-control" type="email" id="email" name="email" required>
+        </div>
+
+        <br>
+
+        <div class="form-group"><label id="cat-label" for="category">Category:</label>
+            <select id="category" name="category" required>
+                <option value="Any">Any</option>
+                <option value="Valuable">Valuable</option>
+                <option value="Non-Valuable">Non-Valuable</option>
+                <option value="Perishable">Perishable</option>
+                <option value="Other">Other</option>
+            </select>
+        </div>
+        
+        <br>
+
+        <input class="btn btn-success" type="submit" value="Create">
+        <br>
+        <h5>Confirm in your Inbox!</h5>
+    </form>
+</body>
+
+</html>
