@@ -68,6 +68,18 @@ if (!$conn) {
 
 mysqli_set_charset($conn, "utf8");
 
+if (isset($_POST['description'])) {
+    $description = $_POST['description'];
+} else {
+    $description = "";
+}
+
+if (isset($_POST['category'])) {
+    $category = $_POST['category'];
+} else {
+    $category = "";
+}
+
 // If image is uploaded
 if (isset($_FILES['image'])) {
   
@@ -105,10 +117,7 @@ if (isset($_FILES['image'])) {
           echo $e->getMessage();
           error_log($e->getMessage());
       }
-    } else {
-        $description = $_POST['description'];
-        $category = $_POST['category'];
-    };
+    }
     
      // Upload the file to S3
     try {
